@@ -1,0 +1,40 @@
+﻿@inherits AdmFieldIDSelectByDropDownModel
+@using Microsoft.AspNetCore.Components
+@using BlazorIssue_EmptyOptionValue
+
+<div><input id="tbx" value="@AdmFieldID" @onchange="OnAFChange" /></div>
+<div>
+    <select id="ddlAdm1" @onchange="OnAFChange" value="@selectedAF.Adm1">
+        <option value=@("") selected="selected" >[Select a Division]</option>
+        @foreach (var af in adm1AFs)
+        {
+            <option value="@af.AdmFieldID">@af.Name</option>
+        }
+    </select>
+</div>
+<div>
+    <select id="ddlAdm2" @onchange="OnAFChange" value="@selectedAF.Adm2">
+        @if (adm2AFs.Count() > 0)
+        {
+            <option value="@selectedAF.Adm1">[Select a Union]</option>
+        }
+        @foreach (var af in adm2AFs)
+        {
+            <option value="@af.AdmFieldID">@af.Name</option>
+        }
+    </select>
+</div>
+<div>
+    <select id="ddlAdm3" @onchange="OnAFChange" value="@selectedAF.Adm3">
+        @if (adm3AFs.Count() > 0)
+        {
+            <option value="@selectedAF.Adm2">[Select a Local Field]</option>
+        }
+        @foreach (var af in adm3AFs)
+        {
+            <option value="@af.AdmFieldID">@af.Name</option>
+        }
+    </select>
+</div>
+
+

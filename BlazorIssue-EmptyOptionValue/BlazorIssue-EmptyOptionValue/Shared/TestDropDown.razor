@@ -1,0 +1,18 @@
+﻿<div><input id="tbx" value="@MyValue" /></div>
+<div>
+    <select id="ddl" @onchange="@OnMyValChange" value="@MyValue">
+        <option value=@("")>[Select Your Greek Letter]</option>
+        <option value="A">Alpha</option>
+        <option value="B">Beta</option>
+        <option value="G">Gamma</option>
+    </select>
+</div>
+
+@code {
+    [Parameter] public string MyValue { get; set; }
+
+    protected void OnMyValChange(ChangeEventArgs e)
+    {
+        MyValue = e.Value.ToString();
+    }
+}
